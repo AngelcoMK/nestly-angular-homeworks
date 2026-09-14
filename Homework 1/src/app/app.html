@@ -2,6 +2,11 @@
   <h1>Nestly</h1>
   <p>Find your perfect stay.</p>
 
+  <nav>
+    <a routerLink="/home" routerLinkActive="active">Home</a>
+    <a routerLink="/stays" routerLinkActive="active">Stays</a>
+  </nav>
+
   <button
     type="button"
     (click)="toggleSuperhostFilter()"
@@ -10,19 +15,6 @@
   </button>
 </header>
 
-<main class="stays-grid">
-  @if (filteredStays.length > 0) {
-    @for (stay of filteredStays; track stay.id) {
-      <app-stay-card
-        [stay]="stay"
-        [isFavorite]="favoriteIds().includes(stay.id)"
-        (favorite)="onFavorite($event)"
-      />
-    }
-  } @else {
-    <div class="empty-state">
-      <h2>No stays found</h2>
-      <p>Try changing your filter.</p>
-    </div>
-  }
+<main>
+  <router-outlet></router-outlet>
 </main>

@@ -1,10 +1,19 @@
 import { Component, signal } from '@angular/core';
-import { StayCardComponent } from './components/stay-card/stay-card';
+import {
+  RouterLink,
+  RouterLinkActive,
+  RouterOutlet
+} from '@angular/router';
+
 import { stays } from './models/stays';
 
 @Component({
   selector: 'app-root',
-  imports: [StayCardComponent],
+  imports: [
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive
+  ],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

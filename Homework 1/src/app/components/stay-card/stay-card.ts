@@ -1,5 +1,7 @@
 import { Component, input, output } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
+
 import { Stay } from '../../models/stay.model';
 import { TruncatePipe } from '../../pipes/truncate-pipe';
 import { BadgeComponent } from '../badge/badge';
@@ -11,7 +13,8 @@ import { HighlightCardDirective } from '../../directives/highlight-card';
     TruncatePipe,
     BadgeComponent,
     HighlightCardDirective,
-    CurrencyPipe
+    CurrencyPipe,
+    RouterLink
   ],
   templateUrl: './stay-card.html',
   styleUrl: './stay-card.css'

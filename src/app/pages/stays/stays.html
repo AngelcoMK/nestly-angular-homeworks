@@ -1,0 +1,9 @@
+<section class="stays-page">
+  <h1>Available Stays</h1>
+
+  <div class="stays-grid">
+    @for (stay of stays; track stay.id) {
+      <app-stay-card [stay]="stay" />
+    }
+  </div>
+</section>
