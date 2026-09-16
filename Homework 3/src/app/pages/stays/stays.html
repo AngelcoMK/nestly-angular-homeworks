@@ -1,0 +1,31 @@
+<section class="stays-page">
+  <h1>Available Stays</h1>
+
+  <button type="button" (click)="loadStays()">
+    Show All Stays
+  </button>
+
+  <button type="button" (click)="loadSuperhostStays()">
+    Show Superhost Stays
+  </button>
+
+  @if (loading()) {
+    <p>Loading stays...</p>
+  }
+
+  @if (error()) {
+    <p>{{ error() }}</p>
+  }
+
+  @if (!loading() && !error()) {
+    <div class="stays-grid">
+      @for (stay of stays; track stay.id) {
+        <app-stay-card
+          [stay]="stay"
+          [isFavorite]="favoriteIds().includes(stay.id)"
+          (favorite)="onFavorite($event)"
+        />
+      }
+    </div>
+  }
+</section>
