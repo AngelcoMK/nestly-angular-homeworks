@@ -1,0 +1,57 @@
+<a
+  class="stay-link"
+  [routerLink]="['/stays', stay().id]"
+>
+  <article class="stay-card" appHighlightCard>
+    <img
+      [src]="stay().image"
+      [alt]="stay().title"
+      class="stay-image"
+    />
+
+    <div class="stay-content">
+      <div class="stay-header">
+        <h2>{{ stay().title }}</h2>
+
+        <button
+          type="button"
+          class="favorite-button"
+          [class.active]="isFavorite()"
+          (click)="$event.stopPropagation(); onFavorite()"
+          [attr.aria-label]="
+            isFavorite()
+              ? 'Remove from favorites'
+              : 'Add to favorites'
+          "
+        >
+          {{ isFavorite() ? '♥' : '♡' }}
+        </button>
+      </div>
+
+      <p class="location">
+        {{ stay().location }}
+      </p>
+
+      <p class="description">
+        {{ stay().description | truncate:40 }}
+      </p>
+
+      <div class="stay-info">
+        <span>⭐ {{ stay().rating }}</span>
+      </div>
+
+      @if (stay().superhost) {
+        <app-badge>
+          SUPERHOST
+        </app-badge>
+      }
+
+      <p class="price">
+        <strong>
+          {{ stay().pricePerNight | currency:'EUR':'symbol':'1.0-0' }}
+        </strong>
+        / night
+      </p>
+    </div>
+  </article>
+</a>

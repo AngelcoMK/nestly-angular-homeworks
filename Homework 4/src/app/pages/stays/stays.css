@@ -1,0 +1,16 @@
+.stays-page {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.stays-page h1 {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.stays-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
