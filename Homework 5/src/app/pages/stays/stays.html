@@ -1,0 +1,45 @@
+<section class="stays-page">
+  <h1>Available Stays</h1>
+
+  <div class="filters">
+    <input
+      type="text"
+      placeholder="Search stays..."
+      [value]="store.search()"
+      (input)="onSearch($event)"
+    />
+
+    <button
+      type="button"
+      (click)="toggleSuperhostOnly()"
+    >
+      {{ store.superhostOnly() ? 'Show All Stays' : 'Show Superhost Stays' }}
+    </button>
+  </div>
+
+  <p>Total stays: {{ store.count() }}</p>
+
+  @if (store.isLoading()) {
+    <p>Loading stays...</p>
+  }
+
+  @if (store.error()) {
+    <p>{{ store.error() }}</p>
+  }
+
+  @if (!store.isLoading() && !store.error()) {
+    @if (store.hasResults()) {
+      <div class="stays-grid">
+        @for (stay of store.stays(); track stay.id) {
+          <app-stay-card
+            [stay]="stay"
+            [isFavorite]="favoriteIds().includes(stay.id)"
+            (favorite)="onFavorite($event)"
+          />
+        }
+      </div>
+    } @else {
+      <p>No stays found.</p>
+    }
+  }
+</section>

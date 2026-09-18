@@ -1,0 +1,22 @@
+.not-found {
+  max-width: 700px;
+  margin: 80px auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.not-found h1 {
+  margin-bottom: 16px;
+  font-size: 36px;
+}
+
+.not-found p {
+  margin-bottom: 24px;
+  color: #666;
+  font-size: 18px;
+}
+
+.not-found a {
+  text-decoration: none;
+  font-weight: 600;
+}
