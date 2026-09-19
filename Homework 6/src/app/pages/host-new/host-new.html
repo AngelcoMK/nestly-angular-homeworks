@@ -1,0 +1,179 @@
+<section class="host-form-page">
+  <h1>List your stay</h1>
+
+  <form [formGroup]="stayForm" (ngSubmit)="onSubmit()">
+
+    <div>
+      <label for="title">Title</label>
+
+      <input
+        id="title"
+        type="text"
+        formControlName="title"
+      />
+
+      @if (
+        stayForm.get('title')?.invalid &&
+        (stayForm.get('title')?.touched || stayForm.get('title')?.dirty)
+      ) {
+        @if (stayForm.get('title')?.hasError('required')) {
+          <p>Title is required.</p>
+        }
+
+        @if (stayForm.get('title')?.hasError('minlength')) {
+          <p>Title must be at least 5 characters long.</p>
+        }
+      }
+    </div>
+
+    <div>
+      <label for="location">Location</label>
+
+      <input
+        id="location"
+        type="text"
+        formControlName="location"
+      />
+
+      @if (
+        stayForm.get('location')?.invalid &&
+        (stayForm.get('location')?.touched || stayForm.get('location')?.dirty)
+      ) {
+        @if (stayForm.get('location')?.hasError('required')) {
+          <p>Location is required.</p>
+        }
+      }
+    </div>
+
+    <div>
+      <label for="pricePerNight">Price per night</label>
+
+      <input
+        id="pricePerNight"
+        type="number"
+        formControlName="pricePerNight"
+      />
+
+      @if (
+        stayForm.get('pricePerNight')?.invalid &&
+        (stayForm.get('pricePerNight')?.touched ||
+         stayForm.get('pricePerNight')?.dirty)
+      ) {
+        @if (stayForm.get('pricePerNight')?.hasError('required')) {
+          <p>Price is required.</p>
+        }
+
+        @if (stayForm.get('pricePerNight')?.hasError('min')) {
+          <p>Price must be at least 10.</p>
+        }
+
+        @if (stayForm.get('pricePerNight')?.hasError('max')) {
+          <p>Price cannot be more than 5000.</p>
+        }
+      }
+    </div>
+
+    <div>
+      <label for="description">Description</label>
+
+      <textarea
+        id="description"
+        formControlName="description"
+      ></textarea>
+
+      @if (
+        stayForm.get('description')?.invalid &&
+        (stayForm.get('description')?.touched ||
+         stayForm.get('description')?.dirty)
+      ) {
+        @if (stayForm.get('description')?.hasError('required')) {
+          <p>Description is required.</p>
+        }
+
+        @if (stayForm.get('description')?.hasError('minlength')) {
+          <p>Description must be at least 20 characters long.</p>
+        }
+      }
+    </div>
+
+    <div>
+      <label>
+        <input
+          type="checkbox"
+          formControlName="superhost"
+        />
+        Superhost
+      </label>
+    </div>
+
+    <div formArrayName="photos">
+      <h2>Photos</h2>
+
+      @for (photo of photos.controls; track $index) {
+        <div>
+          <label [for]="'photo-' + $index">
+            Photo URL {{ $index + 1 }}
+          </label>
+
+          <input
+            [id]="'photo-' + $index"
+            type="text"
+            [formControlName]="$index"
+            placeholder="https://example.com/photo.jpg"
+          />
+
+          @if (
+            photo.invalid &&
+            (photo.touched || photo.dirty)
+          ) {
+            @if (photo.hasError('required')) {
+              <p>Photo URL is required.</p>
+            }
+
+            @if (photo.hasError('invalidUrl')) {
+              <p>
+                Photo must be a valid URL starting with
+                http:// or https://.
+              </p>
+            }
+          }
+
+          <button
+            type="button"
+            (click)="removePhoto($index)"
+            [disabled]="photos.length === 1"
+          >
+            Remove photo
+          </button>
+        </div>
+      }
+
+      <button
+        type="button"
+        (click)="addPhoto()"
+      >
+        Add another photo
+      </button>
+    </div>
+
+    @if (
+      stayForm.hasError('sameAsTitle') &&
+      (stayForm.get('title')?.touched ||
+       stayForm.get('location')?.touched)
+    ) {
+      <p>Title and location must be different.</p>
+    }
+
+    @if (submitError()) {
+      <p>{{ submitError() }}</p>
+    }
+
+    <button
+      type="submit"
+      [disabled]="stayForm.invalid || submitting()"
+    >
+      {{ submitting() ? 'Creating...' : 'Create stay' }}
+    </button>
+
+  </form>
+</section>

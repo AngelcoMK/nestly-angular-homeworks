@@ -1,0 +1,39 @@
+.admin-page {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 24px;
+}
+
+.stays-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.stay-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.stay-item h2 {
+  margin: 0 0 8px;
+}
+
+.stay-item p {
+  margin: 4px 0;
+}
+
+.stay-item button {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.error {
+  color: crimson;
+}

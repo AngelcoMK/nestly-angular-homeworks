@@ -1,0 +1,40 @@
+<section class="admin-page">
+  <h1>Admin Dashboard</h1>
+
+  <p>Manage all Nestly stays.</p>
+
+  @if (isLoading()) {
+    <p>Loading stays...</p>
+  }
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+
+  @if (!isLoading() && stays().length === 0) {
+    <p>No stays found.</p>
+  }
+
+  <div class="stays-list">
+    @for (stay of stays(); track stay.id) {
+      <div class="stay-item">
+        <div>
+          <h2>{{ stay.title }}</h2>
+
+          <p>{{ stay.location }}</p>
+
+          <p>
+            €{{ stay.pricePerNight }} / night
+          </p>
+        </div>
+
+        <button
+          type="button"
+          (click)="deleteStay(stay.id)"
+        >
+          Delete
+        </button>
+      </div>
+    }
+  </div>
+</section>

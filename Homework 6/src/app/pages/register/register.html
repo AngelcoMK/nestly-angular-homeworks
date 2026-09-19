@@ -1,0 +1,93 @@
+<section class="auth-page">
+  <h1>Register</h1>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <label for="firstName">First name</label>
+    <input
+      id="firstName"
+      type="text"
+      formControlName="firstName"
+    />
+
+    @if (
+      registerForm.controls.firstName.touched &&
+      registerForm.controls.firstName.invalid
+    ) {
+      <p class="error">First name is required.</p>
+    }
+
+    <label for="lastName">Last name</label>
+    <input
+      id="lastName"
+      type="text"
+      formControlName="lastName"
+    />
+
+    @if (
+      registerForm.controls.lastName.touched &&
+      registerForm.controls.lastName.invalid
+    ) {
+      <p class="error">Last name is required.</p>
+    }
+
+    <label for="email">Email</label>
+    <input
+      id="email"
+      type="email"
+      formControlName="email"
+    />
+
+    @if (
+      registerForm.controls.email.touched &&
+      registerForm.controls.email.invalid
+    ) {
+      <p class="error">Enter a valid email.</p>
+    }
+
+    <label for="password">Password</label>
+    <input
+      id="password"
+      type="password"
+      formControlName="password"
+    />
+
+    @if (
+      registerForm.controls.password.touched &&
+      registerForm.controls.password.invalid
+    ) {
+      <p class="error">
+        Password must contain at least 8 characters.
+      </p>
+    }
+
+    <label for="confirmPassword">Confirm password</label>
+    <input
+      id="confirmPassword"
+      type="password"
+      formControlName="confirmPassword"
+    />
+
+    @if (
+      registerForm.controls.confirmPassword.touched &&
+      registerForm.hasError('passwordsMismatch')
+    ) {
+      <p class="error">Passwords do not match.</p>
+    }
+
+    @if (store.error()) {
+      <p class="error">{{ store.error() }}</p>
+    }
+
+    <button
+      type="submit"
+      [disabled]="registerForm.invalid || store.isLoading()"
+    >
+      {{ store.isLoading() ? 'Registering...' : 'Register' }}
+    </button>
+  </form>
+
+  <p>
+    Already have an account?
+    <a routerLink="/login">Login</a>
+  </p>
+</section>

@@ -1,0 +1,51 @@
+<section class="auth-page">
+  <h1>Login</h1>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <label for="email">Email</label>
+
+    <input
+      id="email"
+      type="email"
+      formControlName="email"
+    />
+
+    @if (
+      loginForm.controls.email.touched &&
+      loginForm.controls.email.invalid
+    ) {
+      <p class="error">Enter a valid email.</p>
+    }
+
+    <label for="password">Password</label>
+
+    <input
+      id="password"
+      type="password"
+      formControlName="password"
+    />
+
+    @if (
+      loginForm.controls.password.touched &&
+      loginForm.controls.password.invalid
+    ) {
+      <p class="error">Password is required.</p>
+    }
+
+    @if (store.error()) {
+      <p class="error">{{ store.error() }}</p>
+    }
+
+    <button
+      type="submit"
+      [disabled]="loginForm.invalid || store.isLoading()"
+    >
+      {{ store.isLoading() ? 'Logging in...' : 'Login' }}
+    </button>
+  </form>
+
+  <p>
+    Don't have an account?
+    <a routerLink="/register">Register</a>
+  </p>
+</section>

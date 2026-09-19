@@ -1,0 +1,47 @@
+<header class="page-header">
+  <h1>Nestly</h1>
+  <p>Find your perfect stay.</p>
+
+  <nav>
+    <a routerLink="/home" routerLinkActive="active">
+      Home
+    </a>
+
+    <a routerLink="/stays" routerLinkActive="active">
+      Stays
+    </a>
+
+    @if (authStore.isLoggedIn()) {
+      <a routerLink="/host/new" routerLinkActive="active">
+        List your stay
+      </a>
+
+      @if (authStore.isAdmin()) {
+        <a routerLink="/admin" routerLinkActive="active">
+          Admin
+        </a>
+      }
+
+      <span>
+        {{ authStore.user()?.firstName }}
+        {{ authStore.user()?.lastName }}
+      </span>
+
+      <button type="button" (click)="logout()">
+        Logout
+      </button>
+    } @else {
+      <a routerLink="/login" routerLinkActive="active">
+        Login
+      </a>
+
+      <a routerLink="/register" routerLinkActive="active">
+        Register
+      </a>
+    }
+  </nav>
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>

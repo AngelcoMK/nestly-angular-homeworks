@@ -1,0 +1,14 @@
+.not-allowed {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 24px;
+  text-align: center;
+}
+
+.not-allowed h1 {
+  margin-bottom: 16px;
+}
+
+.not-allowed p {
+  margin-bottom: 20px;
+}
