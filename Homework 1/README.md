@@ -1,88 +1,89 @@
-# Nestly - Homework 1
+# Homework 1 - Nestly Angular Basics
 
-## About the project
+## За проектот
 
-Nestly is a simple Angular application for displaying available stays.
+Nestly е Angular апликација за прикажување на достапни сместувања.
 
-This project was created as the first homework for the Angular Academy. The goal was to practice the basic Angular concepts by building a small application with reusable components and dynamic data.
+Ова е првата домашна задача од Angular модулот. Главната цел е практична примена на основните Angular концепти преку креирање на reusable components и прикажување на динамички податоци.
 
-## Features
+## Функционалности
 
-- Display a list of available stays
-- Stay cards with images and information
-- Stay title and location
-- Price per night
-- Rating and number of guests
+- Прикажување листа на достапни stays
+- Stay cards со слика и информации
+- Прикажување на име и локација
+- Цена по ноќевање
+- Rating и број на гости
 - Superhost badge
-- Favorite button
+- Favorite копче
 - Reusable components
-- Custom pipe for shortening descriptions
-- Custom directive for highlighting stay cards
+- Custom pipe за скратување на описот
+- Custom directive за визуелно означување на stay cards
 
-## Angular concepts used
+## Angular концепти
 
-- Standalone components
-- Component inputs
-- Component outputs
+Во оваа домашна задача се користени:
+
+- Standalone Components
+- Component Inputs
+- Component Outputs
 - Signals
-- `@for` and `@if` control flow
-- Property binding
-- Event binding
-- Attribute binding
-- Custom pipes
-- Attribute directives
-- Content projection
+- `@for` и `@if` control flow
+- Property Binding
+- Event Binding
+- Attribute Binding
+- Custom Pipes
+- Attribute Directives
+- Content Projection
 - Angular `CurrencyPipe`
 
-## Project structure
+## Stay Model
 
-The main parts of the application are:
+`Stay` interface ја дефинира структурата на едно сместување.
 
-### Stay model
+Содржи податоци како:
 
-The `Stay` interface defines the structure of a stay.
+- id
+- title
+- location
+- price
+- rating
+- imageUrl
+- guests
+- superhost
+- description
 
-Each stay contains information such as:
+## Stay Card Component
 
-- `id`
-- `title`
-- `location`
-- `price`
-- `rating`
-- `imageUrl`
-- `guests`
-- `superhost`
-- `description`
+`StayCardComponent` е reusable component кој прикажува едно сместување.
 
-### Stay data
+Component-от добива stay преку Input и испраќа event преку Output кога корисникот ќе го притисне Favorite копчето.
 
-The application uses a local list of stays stored in the project.
+## Badge Component
 
-This data is used to display the stay cards on the page.
+`BadgeComponent` се користи за прикажување на `SUPERHOST` badge.
 
-### Stay Card component
+Во component-от се користи и Content Projection.
 
-The `StayCardComponent` is a reusable component used to display one stay.
+## Truncate Pipe
 
-It receives a stay through an input and emits an event when the favorite button is clicked.
+Custom `TruncatePipe` се користи за скратување на подолгите описи, со цел stay cards да останат прегледни.
 
-### Badge component
+## Highlight Card Directive
 
-The `BadgeComponent` is a small reusable component used for displaying the `SUPERHOST` badge.
+Custom `HighlightCardDirective` додава визуелен highlight ефект на stay cards.
 
-It also uses content projection so that the text can be provided from the parent component.
+## Стартување на проектот
 
-### Truncate pipe
-
-The custom `TruncatePipe` is used to shorten long descriptions so that the cards stay compact.
-
-### Highlight card directive
-
-The custom `HighlightCardDirective` is used to add a visual highlight effect to the stay cards.
-
-## Running the project
-
-Install the dependencies:
+Инсталирање на dependencies:
 
 ```bash
 npm install
+Стартување на Angular апликацијата:
+
+ng serve
+
+Потоа се отвора локалната адреса која Angular ќе ја прикаже во терминалот.
+
+Цел на домашната задача
+
+Целта на Homework 1 е практично да ги применам основните Angular концепти и да изработам reusable компоненти кои понатаму се користат и надградуваат во следните Nestly домашни задачи.

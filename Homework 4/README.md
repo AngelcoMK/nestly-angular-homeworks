@@ -1,60 +1,82 @@
-# Homework 3 - Nestly HTTP & API
+# Homework 4 - Nestly Reactive Forms
 
-This homework continues the Nestly Angular application from the previous homework.
+## За проектот
 
-The main goal was to replace the hardcoded stay data with real data from the provided NestJS API using Angular HttpClient.
+Оваа домашна задача е продолжение на Nestly Angular апликацијата од претходните домашни задачи.
 
-## Features
+Главната цел на Homework 4 е работа со Angular Reactive Forms, валидација на податоци и креирање форма за додавање нов stay.
 
-- Load stays from the backend API
-- Display all available stays
-- Filter and display Superhost stays
-- Load a single stay by ID
-- Stay details page
-- Loading state while data is loading
-- Error message when the API is unavailable
-- Not found state for invalid stay IDs
-- Favorite stays functionality kept on the client side
-- Existing routing and reusable components are preserved
+## Функционалности
 
-## Angular Concepts Used
+- Форма за креирање нов stay
+- Reactive Forms
+- Валидација на задолжителни полиња
+- Minimum и maximum value валидација
+- Custom URL validator
+- Cross-field validation
+- Прикажување validation пораки
+- Form submit
+- Испраќање на податоците до Nestly backend API
+- Задржани функционалностите од претходните домашни задачи
 
-- HttpClient
-- provideHttpClient()
+## Angular концепти
+
+Во оваа домашна задача се користени:
+
+- `ReactiveFormsModule`
+- `FormBuilder`
+- `FormGroup`
+- `Validators`
+- Custom Validators
+- Cross-field Validation
+- Form Submission
+- `HttpClient`
 - Services
 - Dependency Injection
-- Observables
-- subscribe()
-- Signals
-- API requests
-- Error handling
-- Route parameters
-- Standalone components
+- Angular Signals
+- Standalone Components
+
+## List Your Stay
+
+Во апликацијата е додадена форма за внесување на ново сместување.
+
+Формата овозможува внесување на потребните информации за stay и ги проверува податоците пред да дозволи нивно испраќање.
+
+Доколку некое поле не е правилно пополнето, на корисникот му се прикажува validation порака.
+
+## Custom Validators
+
+Покрај стандардните Angular validators, користени се и custom validators.
+
+Тие се користат за дополнителна проверка на внесените податоци, вклучувајќи URL validation и проверка на поврзани полиња.
 
 ## API
 
-The application uses the provided Nestly backend API.
+После успешна валидација, податоците за новиот stay се испраќаат до Nestly backend API.
 
 Base API:
 
+```text
 http://localhost:3000/api
 
 Stays endpoint:
 
 http://localhost:3000/api/stays
 
-The backend must be running locally for the stay data to load.
+Backend серверот треба да биде стартуван локално за API функционалностите да работат.
 
-## Run the Angular Application
+Стартување на проектот
 
-Install dependencies:
+Инсталирање на dependencies:
 
 npm install
 
-Start the application:
+Стартување на Angular апликацијата:
 
 ng serve
 
-Open:
+За целосна функционалност треба да биде стартуван и Nestly backend серверот.
 
-http://localhost:55027/
+Цел на домашната задача
+
+Целта на Homework 4 е практична работа со Angular Reactive Forms, Validators, custom validation и испраќање на валидирани податоци кон backend API.

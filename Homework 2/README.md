@@ -1,102 +1,97 @@
-# Nestly - Homework 2
+# Homework 2 - Nestly Routing
 
-## About the project
+## За проектот
 
-This is the second homework for the Angular Academy.
+Оваа домашна задача е продолжение на Nestly Angular апликацијата од Homework 1.
 
-In this homework, I extended the Nestly project from Homework 1 by adding multiple pages and Angular routing.
+Главната цел на Homework 2 е да се додадат повеќе страници и навигација со користење на Angular Router.
 
-The application now has a Home page, a Stays page, stay details, and a Not Found page.
+Апликацијата има Home страница, листа на stays, детали за избран stay и Not Found страница.
 
-## Features
+## Функционалности
 
-* Home page
-* Stays page with available stays
-* Stay details page
-* Dynamic route for stay ID
-* Not Found page
-* Wildcard route for invalid URLs
-* Navigation between pages
-* Active navigation link
-* Redirect from `/` to `/home`
-* Lazy loading with `loadComponent`
-* Reused components from Homework 1
+- Home страница
+- Stays страница со достапните сместувања
+- Stay Details страница
+- Dynamic route според ID на stay
+- Not Found страница
+- Wildcard route за непостоечки URL
+- Навигација помеѓу страниците
+- Active navigation link
+- Redirect од `/` кон `/home`
+- Lazy loading со `loadComponent`
+- Reusable components од Homework 1
 
-## Angular concepts used
+## Angular концепти
 
-* Angular Router
-* Routes
-* `RouterOutlet`
-* `RouterLink`
-* `RouterLinkActive`
-* Route parameters
-* Lazy loading with `loadComponent`
-* Wildcard routes
-* Redirect routes
-* Standalone components
-* Component inputs and outputs
-* Custom pipe
-* Attribute directive
-* Content projection
+Во оваа домашна задача се користени:
+
+- Angular Router
+- Routes
+- `RouterOutlet`
+- `RouterLink`
+- `RouterLinkActive`
+- Route Parameters
+- Lazy Loading со `loadComponent`
+- Wildcard Routes
+- Redirect Routes
+- Standalone Components
+- Component Inputs и Outputs
+- Custom Pipe
+- Attribute Directive
+- Content Projection
 
 ## Routes
 
-| Route        | Description                       |
-| ------------ | --------------------------------- |
-| `/`          | Redirects to Home                 |
-| `/home`      | Home page                         |
-| `/stays`     | Shows all available stays         |
-| `/stays/:id` | Shows details for a selected stay |
-| `**`         | Not Found page                    |
+Апликацијата ги користи следните routes:
 
-## Stay details
+| Route | Опис |
+| --- | --- |
+| `/` | Redirect кон Home |
+| `/home` | Home страница |
+| `/stays` | Ги прикажува сите stays |
+| `/stays/:id` | Детали за избраниот stay |
+| `**` | Not Found страница |
 
-The stay details page uses the ID from the URL.
+## Stay Details
 
-For example:
+Stay Details страницата го користи ID-то од URL адресата за да го пронајде и прикаже избраниот stay.
+
+Пример:
 
 ```text
 /stays/1
-```
 
-The application finds the stay with that ID and displays its information.
+Ако постои stay со тоа ID, се прикажуваат неговите детали.
 
-If the ID does not exist, for example:
+Ако ID-то не постои, на пример:
 
-```text
 /stays/999
-```
 
-the application displays a "Stay not found" message.
+се прикажува порака дека stay не е пронајден.
 
-## Not Found page
+Not Found
 
-Invalid URLs are handled with a wildcard route.
+За непостоечки URL адреси се користи wildcard route.
 
-For example:
+На пример:
 
-```text
 /anything
-```
 
-will display the Not Found page.
+ќе ја прикаже Not Found страницата.
 
-## Running the project
+Стартување на проектот
 
-Install dependencies:
+Инсталирање на dependencies:
 
-```bash
 npm install
-```
 
-Start the Angular development server:
+Стартување на Angular апликацијата:
 
-```bash
-npm start
-```
+ng serve
 
-Then open the local address shown in the terminal.
+Потоа се отвора локалната адреса која Angular ќе ја прикаже во терминалот.
 
-## Homework goal
+Цел на домашната задача
 
-The main goal of this homework was to extend the first Nestly project with Angular routing and multiple pages while reusing the components and features created in Homework 1.
+Целта на Homework 2 е да ја надградам Nestly апликацијата со Angular Routing, повеќе страници, динамички routes и навигација.
